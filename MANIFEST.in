@@ -1,0 +1,6 @@
+include csrc/src/darts-config.h
+include csrc/include/darts.h
+include dartsclone/*.pyx
+include dartsclone/*.pxd
+include dartsclone/*.py
+exclude dartsclone/*.cpp

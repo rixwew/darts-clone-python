@@ -1,0 +1,3 @@
+[submodule "csrc"]
+	path = csrc
+	url = https://github.com/s-yata/darts-clone.git
