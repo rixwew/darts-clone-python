@@ -4,6 +4,8 @@ cdef extern from "darts.h":
         size_t length
 
     cdef cppclass CppDoubleArray "Darts::DoubleArray":
+        void set_array(const void *ptr, size_t size)
+        const void *array()
         void clear() nogil
         size_t unit_size() nogil
         size_t size() nogil
@@ -43,6 +45,8 @@ cdef extern from "darts.h":
                      size_t & node_pos,
                      size_t & key_pos,
                      size_t length) nogil except +
+
+
 
 
 cdef class DoubleArray:

@@ -1,11 +1,21 @@
 from libc.stdlib cimport malloc, free
 
+
 cdef class DoubleArray:
     def __cinit__(self):
         self.wrapped = new CppDoubleArray()
 
     def __dealloc__(self):
         del self.wrapped
+
+    def array(self):
+        cdef size_t total_size = self.wrapped.total_size()
+        cdef char[:] data = <char[:total_size]>self.wrapped.array()
+        return bytes(data)
+
+    def set_array(self, bytes array, size_t size=0):
+        cdef const char * data = array
+        self.wrapped.set_array(<const void*> data, size)
 
     def clear(self):
         self.wrapped.clear()
@@ -72,10 +82,10 @@ cdef class DoubleArray:
     def exact_match_search(self, key,
                            size_t length = 0,
                            size_t node_pos = 0,
-                           include_length=True):
+                           pair_type=True):
         cdef const char *_key = key
-        if include_length:
-            return self.__exact_match_search_include_length(_key, length, node_pos)
+        if pair_type:
+            return self.__exact_match_search_pair_type(_key, length, node_pos)
         else:
             return self.__exact_match_search(_key, length, node_pos)
 
@@ -83,12 +93,12 @@ cdef class DoubleArray:
                              size_t max_num_results = 0,
                              size_t length = 0,
                              size_t node_pos = 0,
-                             include_length=True):
+                             pair_type=True):
         cdef const char *_key = key
         if max_num_results == 0:
             max_num_results = len(key)
-        if include_length:
-            return self.__common_prefix_search_include_length(_key, max_num_results, length, node_pos)
+        if pair_type:
+            return self.__common_prefix_search_pair_type(_key, max_num_results, length, node_pos)
         else:
             return self.__common_prefix_search(_key, max_num_results, length, node_pos)
 
@@ -110,7 +120,7 @@ cdef class DoubleArray:
             self.wrapped.exact_match_search(key, result, length, node_pos)
         return result
 
-    def __exact_match_search_include_length(self, const char *key,
+    def __exact_match_search_pair_type(self, const char *key,
                                             size_t length = 0,
                                             size_t node_pos = 0):
         cdef result_pair_type result
@@ -134,7 +144,7 @@ cdef class DoubleArray:
             free(results)
         return values
 
-    def __common_prefix_search_include_length(self, const char *key,
+    def __common_prefix_search_pair_type(self, const char *key,
                                               size_t max_num_results,
                                               size_t length,
                                               size_t node_pos):
