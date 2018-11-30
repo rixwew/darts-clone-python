@@ -2,7 +2,7 @@ from Cython.Build import cythonize
 from setuptools import setup, Extension
 
 NAME = 'dartsclone'
-VERSION = '0.1'
+VERSION = '0.3'
 EXTENSIONS = [
     Extension(
         '{0}._{0}'.format(NAME),
@@ -17,9 +17,14 @@ EXTENSIONS = [
 
 if __name__ == '__main__':
     import os
+    from os import path
     import glob
 
     [os.remove(f) for f in glob.glob('%s/*cpp' % NAME)]
+
+    with open(path.join(path.dirname(__file__), 'README.md'), encoding='utf-8') as f:
+        readme = f.read()
+
     setup(
         packages=[NAME],
         name=NAME,
@@ -30,10 +35,13 @@ if __name__ == '__main__':
         url='https://github.com/rixwew/darts-clone-python',
         ext_modules=cythonize(EXTENSIONS),
         zip_safe=False,
+        long_description=readme,
+        long_description_content_type='text/markdown',
         classifiers=[
             'License :: OSI Approved :: Apache Software License',
             'Programming Language :: Cython',
             'Programming Language :: Python :: 2',
-            'Programming Language :: Python :: 3'
+            'Programming Language :: Python :: 3',
+            'Topic :: Text Processing :: Linguistic'
         ]
     )
