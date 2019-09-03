@@ -1,4 +1,3 @@
-from Cython.Build import cythonize
 from setuptools import setup, Extension
 
 NAME = 'dartsclone'
@@ -33,7 +32,10 @@ if __name__ == '__main__':
         author='@rixwew',
         author_email='rixwew@gmail.com',
         url='https://github.com/rixwew/darts-clone-python',
-        ext_modules=cythonize(EXTENSIONS),
+        setup_requires=[
+            'cython',
+        ],
+        ext_modules=EXTENSIONS,
         zip_safe=False,
         long_description=readme,
         long_description_content_type='text/markdown',
@@ -43,5 +45,7 @@ if __name__ == '__main__':
             'Programming Language :: Python :: 2',
             'Programming Language :: Python :: 3',
             'Topic :: Text Processing :: Linguistic'
-        ]
+        ],
+        install_requires=['Cython']
     )
+
