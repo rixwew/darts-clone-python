@@ -13,9 +13,8 @@ cdef class DoubleArray:
         cdef char[:] data = <char[:total_size]>self.wrapped.array()
         return bytes(data)
 
-    def set_array(self, bytes array, size_t size=0):
-        cdef const char * data = array
-        self.wrapped.set_array(<const void*> data, size)
+    def set_array(self, const unsigned char[::1] array, size_t size=0):
+        self.wrapped.set_array(<const void*> &array[0], size)
 
     def clear(self):
         self.wrapped.clear()
