@@ -33,7 +33,7 @@ if __name__ == '__main__':
         author_email='rixwew@gmail.com',
         url='https://github.com/rixwew/darts-clone-python',
         setup_requires=[
-            'cython',
+            'cython>=0.28',
         ],
         ext_modules=EXTENSIONS,
         zip_safe=False,
