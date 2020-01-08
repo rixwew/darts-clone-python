@@ -8,6 +8,12 @@ cdef class DoubleArray:
     def __dealloc__(self):
         del self.wrapped
 
+    def __getstate__(self):
+        return self.array()
+
+    def __setstate__(self, array):
+        self.set_array(array)
+
     def array(self):
         cdef size_t total_size = self.wrapped.total_size()
         cdef char[:] data = <char[:total_size]>self.wrapped.array()
