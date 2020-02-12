@@ -1,0 +1,24 @@
+name: make source distribution
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: make sdist
+      run: |
+        git submodule update --init --recursive
+        python setup.py sdist
+    - name: upload sdist
+      uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist
