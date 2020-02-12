@@ -1,0 +1,21 @@
+name: build wheels for linux
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: submodule update
+      run: |
+        git submodule update --init --recursive
+    - uses: ./.github/workflows/actions/manylinux1_x86_64/
+    - uses: ./.github/workflows/actions/manylinux1_i686/
+    - name: upload wheels
+      uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist
