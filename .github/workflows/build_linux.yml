@@ -30,5 +30,4 @@ jobs:
     - name: Publish to PyPI
       run: |
         pip install twine
-        python -m twine upload dist/*
-      
+        python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
