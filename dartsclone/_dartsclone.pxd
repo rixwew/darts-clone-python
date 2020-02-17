@@ -1,4 +1,3 @@
-# cython: language_level=3
 cdef extern from "darts.h":
     cdef struct result_pair_type "Darts::DoubleArray::result_pair_type":
         int value
