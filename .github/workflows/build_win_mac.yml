@@ -45,4 +45,5 @@ jobs:
     - name: Publish to PyPI
       run: |
         pip install twine
-        python setup.py publish
+        twine upload dist/*
+      shell: bash
