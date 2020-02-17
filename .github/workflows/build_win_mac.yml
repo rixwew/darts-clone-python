@@ -34,7 +34,7 @@ jobs:
         PYPI_USERNAME: ${{ secrets.TEST_PYPI_USER }}
         PYPI_PASSWORD: ${{ secrets.TEST_PYPI_PASSWORD }}
       run: |
-        echo '[pypi]' >> ~/.pypirc
+        echo '[pypitest]' >> ~/.pypirc
         echo "username=${PYPI_USERNAME}" >> ~/.pypirc
         echo "password=${PYPI_PASSWORD}" >> ~/.pypirc
     - name: Publish to PyPI
