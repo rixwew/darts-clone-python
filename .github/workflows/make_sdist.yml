@@ -33,5 +33,4 @@ jobs:
     - name: Publish to PyPI
       run: |
         pip install twine
-        twine upload dist/*
-  
+        python -m twine upload dist/*
