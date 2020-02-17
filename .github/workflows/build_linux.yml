@@ -25,7 +25,7 @@ jobs:
         PYPI_PASSWORD: ${{ secrets.TEST_PYPI_PASSWORD }}
       run: |
         echo -e '[pypitest]' >> ~/.pypirc
-        echo -e 'repository: https://test.pypi.org/legacy/' >> ~/.pypirc
+        echo -e 'repository=https://test.pypi.org/legacy/' >> ~/.pypirc
         echo -e "username=${PYPI_USERNAME}" >> ~/.pypirc
         echo -e "password=${PYPI_PASSWORD}" >> ~/.pypirc
     - name: Publish to PyPI
