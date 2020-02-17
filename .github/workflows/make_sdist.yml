@@ -27,6 +27,14 @@ jobs:
         PYPI_USERNAME: ${{ secrets.TEST_PYPI_USER }}
         PYPI_PASSWORD: ${{ secrets.TEST_PYPI_PASSWORD }}
       run: |
+        echo -e '[distutils]' >> ~/.pypirc
+        echo -e 'index-servers =' >> ~/.pypirc
+        echo -e '  pypi' >> ~/.pypirc
+        echo -e '  testpypi' >> ~/.pypirc
+        echo -e '[pypi]' >> ~/.pypirc
+        echo -e 'repository=https://upload.pypi.org/legacy/' >> ~/.pypirc
+        echo -e "username=${PYPI_USERNAME}" >> ~/.pypirc
+        echo -e "password=${PYPI_PASSWORD}" >> ~/.pypirc
         echo -e '[pypitest]' >> ~/.pypirc
         echo -e 'repository=https://test.pypi.org/legacy/' >> ~/.pypirc
         echo -e "username=${PYPI_USERNAME}" >> ~/.pypirc
