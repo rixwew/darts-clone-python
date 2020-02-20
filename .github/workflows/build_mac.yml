@@ -1,4 +1,4 @@
-name: build wheels for windows and macos
+name: build wheels for macos
 
 on: [push]
 
@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest]
-        architecture: [“x64”, “x86"]
+        architecture: [x64, x86]
         python-version: [3.6, 3.7, 3.8]
 
     steps:
