@@ -1,7 +1,7 @@
 from setuptools import setup, Extension
 
 NAME = 'dartsclone'
-VERSION = '0.8.4'
+VERSION = '0.8.5'
 EXTENSIONS = [
     Extension(
         '{0}._{0}'.format(NAME),
