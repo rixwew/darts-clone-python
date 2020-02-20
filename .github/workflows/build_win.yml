@@ -18,6 +18,7 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
       with:
+        architecture: ${{ matrix.architecture }}
         python-version: ${{ matrix.python-version }}
     - name: build wheel
       run: |
