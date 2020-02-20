@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest, macos-latest]
+        os: [windows-latest]
         architecture: [“x64”, “x86"]
         python-version: [3.6, 3.7, 3.8]
 
@@ -28,7 +28,7 @@ jobs:
     - name: upload wheel
       uses: actions/upload-artifact@v1
       with:
-        name: dist_${{ matrix.os }}_${{ matrix.python-version }}
+        name: dist_${{ matrix.os }}_${{ matrix.architecture }}_${{ matrix.python-version }}
         path: dist
     - name: Publish to PyPI
       env:
