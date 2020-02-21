@@ -1,6 +1,9 @@
 name: make source distribution
 
-on: [push]
+on:
+  push:
+    tags:
+      - v*
 
 jobs:
   build:

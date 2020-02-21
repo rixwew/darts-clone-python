@@ -1,6 +1,9 @@
 name: build wheels for windows
 
-on: [push]
+on:
+  push:
+    tags:
+      - v*
 
 jobs:
   build:

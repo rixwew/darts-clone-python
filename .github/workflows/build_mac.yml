@@ -1,6 +1,9 @@
 name: build wheels for macos
 
-on: [push]
+on:
+  push:
+    tags:
+      - v*
 
 jobs:
   build:
