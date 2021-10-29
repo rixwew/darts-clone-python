@@ -1,0 +1,7 @@
+name: 'build wheels with manylinux2014_i686'
+description: 'build wheels with manylinux2014_i686'
+runs:
+    using: 'docker'
+    image: docker://quay.io/pypa/manylinux2014_i686
+    args:
+        - .github/workflows/actions/entrypoint.sh

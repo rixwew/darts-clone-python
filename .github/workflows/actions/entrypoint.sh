@@ -8,6 +8,6 @@ for PYTHON in ${PYTHONS[@]}; do
     /opt/python/${PYTHON}/bin/pip wheel . -w /github/workspace/wheelhouse/
 done
 
-for whl in /github/workspace/wheelhouse/*.whl; do
-    auditwheel repair $whl
+for whl in /github/workspace/wheelhouse/*linux_"$(uname -m)".whl; do
+    auditwheel repair $whl --plat manylinux2014_"$(uname -m)"
 done
