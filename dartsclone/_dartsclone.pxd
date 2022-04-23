@@ -51,3 +51,6 @@ cdef extern from "darts.h":
 
 cdef class DoubleArray:
     cdef CppDoubleArray *wrapped
+    cdef Py_buffer _buf
+    cdef Py_ssize_t _shape[1]
+    cdef Py_ssize_t _strides[1]
