@@ -45,3 +45,5 @@ darts.clear()
 darts.set_array(array)
 
 ```
+
+Note: If you see "**ImportError: DLL load failed:** The specified module could not be found" when "**import** dartsclone", download [the latest supported Visual C++ redistributable packages](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) and install it.
